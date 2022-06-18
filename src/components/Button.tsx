@@ -1,20 +1,27 @@
 import React from 'react'
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 
 
 interface Props{
     text: string,
-    color?:string
+    color?:string,
+    big?: boolean
 }
 
-export const Button = ({text, color = '#2D2D2D'}: Props) => {
+export const Button = ({text, color = '#2D2D2D', big = false}: Props) => {
   return (
-    <View style = {{
-        ... styles.button,
-        backgroundColor: color
-        }}>
-        <Text style = {styles.textButton }> {text} </Text>
-    </View>
+    <TouchableOpacity>
+        <View style = {{
+            ... styles.button,
+            backgroundColor: color,
+            width: (big) ? 180 : 80
+            }}>
+            <Text style = {{
+                    ...styles.textButton,
+                    color: (color === '#9B9B9B') ? 'black': 'white'
+                }}> {text} </Text>
+        </View>
+    </TouchableOpacity>
   )
 }
 
