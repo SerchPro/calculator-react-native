@@ -3,14 +3,19 @@ import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 
 
 interface Props{
+    action: ( textNumber: string ) => void;
     text: string,
     color?:string,
-    big?: boolean
+    big?: boolean,
+    
 }
 
-export const Button = ({text, color = '#2D2D2D', big = false}: Props) => {
+export const Button = ({text, color = '#2D2D2D', big = false, action}: Props) => {
   return (
-    <TouchableOpacity>
+    <TouchableOpacity
+        onPress={ () => action (text) }
+    
+    >
         <View style = {{
             ... styles.button,
             backgroundColor: color,
