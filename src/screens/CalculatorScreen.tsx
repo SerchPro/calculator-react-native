@@ -13,6 +13,36 @@ export const CalculatorScreen = () => {
     console.log("click")
     setNumber('0')
   }
+
+  const btnDelete = () =>{
+
+    if(number.length  == 1 && number.includes('0')) return;
+
+    if(number.length  == 1  ) setNumber( '0' );
+
+    if(number.length > 1) setNumber( number.substring(0, number.length -1) );
+
+    if(number.length  == 2 && number.includes('-'))  setNumber( '0' );
+    
+    if(number.length  == 1  ) setNumber( '0' );
+
+    /**
+     * let negative = '';
+     * let numTemp = number;
+     * if( number.includes('-') ){
+     *    negative = '-'
+     *    numTemp = number.substr(1);
+     * }
+     * 
+     * if( numTemp.length > 1){
+     *  setNumber( negative + numTemp.slice(0,-1))
+     * } else{
+     *  setNumber('0');
+     * }
+     */
+    
+
+  }
   
   const createNumber = ( textNumber: string) => {
     if(number.includes('.') && textNumber === '.') return;
@@ -66,7 +96,7 @@ export const CalculatorScreen = () => {
         <View  style = {styles.row}>
           <Button text="c" color='#9B9B9B' action = {clean} />
           <Button text="+/-" color='#9B9B9B' action = {positiveNegative}/>
-          <Button text="del" color='#9B9B9B' action = {clean}/>
+          <Button text="del" color='#9B9B9B' action = {btnDelete}/>
           <Button text="/" color='#FF9427' action = {clean}/>
         </View>
 
